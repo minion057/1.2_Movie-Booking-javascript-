@@ -1,6 +1,8 @@
 # 1.2_Movie-Booking
 2017에 Javascript로만 제작한 영화예매사이트이다.
 
+
+
 #실행 순서
 1. main 폴더의 code.html 열기
 2. 영화 예매 버튼 클릭 (seat-select 폴더의 select.html 파일이 열림)
@@ -10,6 +12,9 @@
 6. select.html처럼 예매자 정보, 결제 수단 등 순서대로 입력해야 예매완료를 할 수 있다.
 7. 예매 버튼 클릭
 8. last 폴더의 last.html 파일이 열림
+
+
+
 
 #내가 구현한 부분(payment_결제)
 1. 하나의 페이지에 프레임을 이용하여 여러 html 파일을 보이게 했다.
