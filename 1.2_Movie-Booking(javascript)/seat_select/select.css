@@ -1,0 +1,145 @@
+body
+{
+  font-family: "Noto Sans KR", "Nanum Gothic", "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.ui-datepicker-week-end {color:red;}
+.ui-datepicker-week-end .ui-state-default {color:red;}
+
+div#ui-datepicker-div { width: 250px; }
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+#icon{
+  position: absolute;
+  left: 650px;
+  top: 5px;
+}
+#image{
+  position: absolute;
+  left: 20px;
+  top: 140px;
+}
+body { 
+  font-family:'Noto Sans KR';
+  font-weight: 500;
+}
+.movtimethe{
+  position: absolute;
+  left:0px;
+  top: 185px;
+}
+.inputForm{
+  position: absolute;
+  left:870px;
+  top:185px;
+}
+.datepicker{
+  position: absolute;
+  left: 600px;
+  top: 185px;
+}
+.displayerBoxes{
+  position: absolute;
+  left:550px;
+  top: 450px;
+}
+.seatStructure{
+  position: absolute;
+  left:975px;
+  top:400px;
+}
+#movieimg{
+  position: absolute;
+  left: 20px;
+  top: 400px;
+}
+
+.screen
+{
+  width:100%;
+  height:20px;
+  background:#3d3d3d;
+  color:rgb(214, 214, 214);
+  line-height:20px;
+  font-size:15px;
+}
+
+.smallBox::before
+{
+  content:".";
+  width:15px;
+  height:15px;
+  float:left;
+  margin-right:10px;
+}
+.greenBox::before
+{
+  content:"";
+  background:Green;
+}
+
+.emptyBox::before
+{
+  content="";
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+  background-color:#ccc;
+}
+
+.seats
+{
+  border:1px solid red;background:yellow;
+} 
+
+
+
+.seatGap
+{
+  width:10px;
+}
+
+.seatVGap
+{
+  height:10px;
+}
+
+table
+{
+  text-align:center;
+}
+
+
+.Displaytable
+{
+  text-align: center;
+}
+.Displaytable td, .Displaytable th {
+    border: 1px solid;
+    text-align: center;
+}
+
+textarea
+{
+  border:none;
+  background:transparent;
+}
+
+
+
+input[type=checkbox] {
+    width:0px;
+    margin-right:18px;
+}
+
+input[type=checkbox]:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align:middle;
+    text-align: center;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    background-color:#ccc;
+}
+
+input[type=checkbox]:checked:before {
+    background-color:Green;
+    font-size: 15px;
+}

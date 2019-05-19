@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script>
+    function onlyhangul() {//한글만 입력
+        var keyID = (event.which) ? event.which : event.keyCode;
+        if ((keyID < 12592) || (keyID > 12687) || keyID == 8 || keyID == 16 || keyID == 46 || keyID == 37 || keyID == 39)
+            //가~힣  => 45032~55203(자음 => 12593~12622 | 모음 => 12623~12643), deldete키나 backspace키, →, ←키, shift키는 허용
+            event.returnValue = false;
+    }
+    function onlyNumber(event) { //번호 입력 텍스트박스에 숫자만 입력하게 하는 함수
+        event = event || window.event;
+        //인수로 전달받은 event가  유효하면 이를 event에 스스로를 다시 한 번 대입하고 IE 브라우저에서 사용할 경우 념겨받은 event가 무효한 경우 window.event로 대신하겠다는 것
+        var keyID = (event.which) ? event.which : event.keyCode; //텍스트박스에서 입력받은 키값을 저장
+        if ((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
+            return; //숫자입력만 허용하나 deldete키나 backspace키, →, ←키는 허용
+        else
+            return false;
+    }
+    function removeChar(event) { //특수기호나, 글자가 입력된다면 바로바로 삭제시켜주기
+        event = event || window.event;
+        //인수로 전달받은 event가  유효하면 이를 event에 스스로를 다시 한 번 대입하고 IE 브라우저에서 사용할 경우 념겨받은 event가 무효한 경우 window.event로 대신하겠다는 것
+        var keyID = (event.which) ? event.which : event.keyCode; //텍스트박스에서 입력받은 키값을 저장
+        if (keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
+            return; //deldete키나 backspace키, →, ←키는 허용
+        else
+            event.target.value = event.target.value.replace(/[^0-9]/g, ""); //숫자가 이는 문자라면 빈공간으로 변경하여 삭제시킨 것처럼 보이게 함
+    }
+    function check() { //이름과 번호의 입력을 확인
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var n = document.getElementById("name").value.length; //이름 길이 가져오기
+        var p = document.getElementById("phone").value.length; //번호 길이 가져오기
+        if (name != "" && (n == 2 || n == 3) && phone != "" && p == 11) { //이름(2~3글자)과 번호(11자리 숫자) 입력이 완벽하다면
+            document.getElementById("pay").href = "2payment.html"; //pay라는 이름을 가진 부분의 주소를 payment.html로 변경
+        }
+        else alert("이름과 번호를 확인해주세요.") //이름과 번호 입력이 이상한 경우 다시 입력하라고 보여준다
+    }
+</script>
+<body>
+    <div style="text-align:center">
+        <img src="icon/menu_user.png" style="vertical-align:middle;" width="400" height="50" /><br /><br /><br /><br />
+        <img src="icon/user_name.png" width="80" height="35" style="vertical-align:middle;"/>
+        <input type="text" placeholder="이름을 입력하세요." maxlength=3 pattern="[a-zA-z]{4,10}" style="text-align:center; width:200px; height:35px;"
+               title="한글만 입력해주세요." onKeyPress="onlyhangul();" id="name"/><br /><br />
+        <img src="icon/user_number.png" width="80" height="35"  style="vertical-align:middle;"/>
+        <input type="tel" placeholder="번호을 입력하세요." maxlength=11 pattern="[0-9]{11}" style="text-align:center; width:200px; height:35px; "
+               title="'-'를 제외한 숫자만 입력해주세요." onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' id="phone"/><br /><br />
+        <a id="pay" href="icon/pay_sel.png" target="pay_h"><img src="icon/check.png" width="50" height="25" style="vertical-align:middle;" id="check" onclick="check();" /></a>
+    </div>
+</body>
+</html>

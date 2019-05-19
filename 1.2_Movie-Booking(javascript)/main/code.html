@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+        <head>   
+                <script src="http://code.jquery.com/jquery-latest.js"></script>
+                <script type="text/javascript"> //달력만들기 코드
+                function setStyle(id,style,value)
+                {
+                    id.style[style] = value;
+                }
+                function opacity(el,opacity)
+                {
+                        setStyle(el,"filter:","alpha(opacity="+opacity+")");
+                        setStyle(el,"-moz-opacity",opacity/100);
+                        setStyle(el,"-khtml-opacity",opacity/100);
+                        setStyle(el,"opacity",opacity/100);
+                }
+                function calendar()
+                {
+                        var date = new Date();
+                        var day = date.getDate();
+                        var month = date.getMonth();
+                        var year = date.getYear();
+                        if(year<=200)
+                                year += 1900;
+                        months = new Array('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12');
+                        days_in_month = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+                        if(year%4 == 0 && year!=1900)
+                                days_in_month[1]=29;
+                        total = days_in_month[month];
+                        var date_today = year+'년'+months[month]+'월 '+day+'일';
+                        beg_j = date;
+                        beg_j.setDate(1);
+                        if(beg_j.getDate()==2)
+                                beg_j=setDate(0);
+                        beg_j = beg_j.getDay();
+                        document.write('<table class="cal_calendar" onload="opacity(document.getElementById(\'cal_body\'),20);"><tbody id="cal_body"><tr><th colspan="7">'+date_today+'</th></tr>');
+                        document.write('<tr class="cal_d_weeks"><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr><tr>');
+                        week = 0;
+                        for(i=1;i<=beg_j;i++){
+                                document.write('<td class="cal_days_bef_aft">'+(days_in_month[month-1]-beg_j+i)+'</td>');
+                                week++;
+                                }
+                        for(i=1;i<=total;i++){
+                                if(week==0)
+                                        document.write('<tr>');
+                                if(day==i)
+                                        document.write('<td class="cal_today">'+i+'</td>');
+                                else
+                                        document.write('<td>'+i+'</td>');
+                                week++;
+                                if(week==7) {
+                                        document.write('</tr>');
+                                        week=0;
+                                }
+                        }
+                        for(i=1;week!=0;i++){
+                                document.write('<td class="cal_days_bef_aft">'+i+'</td>');
+                                week++;
+                                if(week==7) {
+                                        document.write('</tr>');
+                                        week=0;
+                                }
+                        }
+                        document.write('</tbody></table>');
+                        opacity(document.getElementById('cal_body'),70);
+                        return true;
+                }   //달력만들기 코드끝
+
+                function mouseOverh(){      //해피데스데이
+                        document.getElementById("h").src ="h1.jpg";
+                        }
+                        function mouseOuth(){
+                        document.getElementById("h").src ="h.jpg";
+                        }
+
+                        function mouseOverb(){    //범죄도시
+                        document.getElementById("b").src ="b1.jpg";
+                        }
+                        function mouseOutb(){
+                        document.getElementById("b").src ="b.jpg";
+                        }
+
+                        function mouseOverj(){  //저스티스리그
+                        document.getElementById("j").src ="j1.jpg";
+                        }
+                        function mouseOutj(){
+                        document.getElementById("j").src ="j.jpg";
+                        }
+
+                        function mouseOveri(){  //아이캔스피크
+                        document.getElementById("i").src ="i1.jpg";
+                        }
+                        function mouseOuti(){
+                        document.getElementById("i").src ="i.jpg";
+                        }
+
+                        function mouseOvert(){   //토르
+                        document.getElementById("t").src ="t1.jpg";
+                        }
+                        function mouseOutt(){
+                        document.getElementById("t").src ="t.jpg";
+                        }
+
+                       
+                        </script>
+                        </script>
+                        
+                <style>
+                table.cal_calendar{padding:0px;margin:0 auto;}
+                table.cal_calendar th{border:1px solid #000000;background-color:#FFFFFF;width:36px;color:#000000;font-family:돋움;font-size:15px;padding:3px;}
+                table.cal_calendar td{border:1px;background-color:#FFFFFF;text-align:center;width:20px;height:25px;font-family:궁서;font-size:15px;padding:0px;}
+                .cal_today{color:#FF0000;font-weight:bold;}
+                .cal_days_bef_aft{color:#FC3131;}
+                </style>      
+                </head>    
+    
+
+
+        <body bgcolor="#7D7C7C" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0"> <!--화면 제일큰배경-->
+            <table cellpadding="0" cellspacing="0" border="0"  align="center"> <!--테이블-->
+                <tr width="920" height="20" bgcolor="#7D7C7C"> <td></td></tr> <!--제일위에와 테이블사이 간격-->
+ 
+                <td colspan="6" width="920" height="150" bgcolor="#7D7C7C"> <!--로고-->
+                    <center><a href="javascript:window.location.reload(true);">
+                        <img id="img" src="logo1.png" onclick="location.reload()"> <!--새로고침-->
+                    </a></center>
+                </td>
+
+                <tr>
+                <td colspan="5" width="920" height="320" bgcolor="#7D7C7C">  <!--영화포스터 삽입-->
+                        <center>
+                        <img id="b" src="b.jpg" width="179" height="320"border="0" onMouseOver="mouseOverb()" onMouseOut="mouseOutb()" /
+                        onclick="window.open('http://movie.naver.com/movie/bi/mi/basic.nhn?code=161242','asdfo8or','scrollbars=yes,width=500,height=500,top=10,left=20');">
+                        <img id="i" src="i.jpg" width="179" height="320"border="0" onMouseOver="mouseOveri()" onMouseOut="mouseOuti()" /
+                        onclick="window.open('http://movie.naver.com/movie/bi/mi/basic.nhn?code=161850','asdfo8or','scrollbars=yes,width=500,height=500,top=10,left=20');">
+                        <img id="t" src="t.jpg" width="179" height="320"border="0" onMouseOver="mouseOvert()" onMouseOut="mouseOutt()" /
+                        onclick="window.open('http://movie.naver.com/movie/bi/mi/basic.nhn?code=134898','asdfo8or','scrollbars=yes,width=500,height=500,top=10,left=20');">
+                        <img id="j" src="j.jpg" width="179" height="320"border="0" onMouseOver="mouseOverj()" onMouseOut="mouseOutj()" /
+                        onclick="window.open('http://movie.naver.com/movie/bi/mi/basic.nhn?code=116866','asdfo8or','asdfo8or','scrollbars=yes,width=500,height=500,top=10,left=20');">
+                        <img id="h" src="h.jpg" width="179" height="320"border="0" onMouseOver="mouseOverh()" onMouseOut="mouseOuth()" /
+                        onclick="window.open('http://movie.naver.com/movie/bi/mi/basic.nhn?code=164932','asdfo8or','scrollbars=yes,width=500,height=500,top=10,left=20');">
+                        </center>
+                </td>
+        </tr>
+        
+
+                <tr>
+                <td width="300" height="160" bgcolor="#7D7C7C"> <!--광고창-->
+                        <style type="text/css">
+                                .css_test {
+                                    border-radius : 5px;
+                                    display : none;
+                                    padding : 10px;
+                                    text-align : center;
+                                }
+                            </style>
+                            
+                            <div class="mb10">
+                                <center><button type="button" onclick="$('.css_test').hide().slideDown(1500)">쿠폰과 혜택 받아가세요!!!</button></center>
+                            </div>
+                            <div class="css_test">
+                                <img src="ad.jpg" /><br>
+                                <button type="button" onclick="$('.css_test').hide()">감추기</button>
+                            </div>
+                        
+        
+                       
+                      
+
+                </td>
+                <td width="10" height="160" bgcolor="#7D7C7C"> <!--로그인과 예매창사이 여백?-->
+                </td>
+                <td width="300" height="160" bgcolor="#FF0000"> <!--예매창-->
+                    <a href="#" data-filter-type="08" title="현재선택됨" onclick="parent.location.href='../seat_select/select.html'">
+                        <center>예매</center>
+                    </a>
+                </td>
+                <td width="10" height="160" bgcolor="#7D7C7C"> <!--예매창과 달력창사이 여백?-->
+                </td>
+
+                <td width="300" height="160" bgcolor="#ffff9f"> <!--달력창-->
+                    <script type="text/javascript">
+                        calendar();
+                    </script>
+
+                </td>
+                </tr>
+                </table>
+                
+            <center><text>제작:인하궁전</text>  </center>       
+        </body>
+    
+
+</html>

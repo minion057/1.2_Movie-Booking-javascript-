@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script type="text/javascript">
+    function selection(n) { //결제수단 선택에 따라 다른 수단이 안보이고, 다시선택하는 버튼을 보이게 함
+        switch (n) {
+            case 1: //카드결제 경우
+                document.getElementById("s2").style.visibility = "hidden";
+                document.getElementById("s3").style.visibility = "hidden";
+                document.getElementById("a2").href = "5card.html";
+                document.getElementById("a3").href = "5card.html";
+                break;
+            case 2: //현장 결제 경우
+                document.getElementById("s1").style.visibility = "hidden";
+                document.getElementById("s3").style.visibility = "hidden";
+                document.getElementById("a1").href = "5cinema.html";
+                document.getElementById("a3").href = "5cinema.html";
+                break;
+            case 3: //무통장입금인 경우
+                document.getElementById("s1").style.visibility = "hidden";
+                document.getElementById("s2").style.visibility = "hidden";
+                document.getElementById("a1").href = "5bank.html";
+                document.getElementById("a2").href = "5bank.html";
+                break;
+        }
+        document.getElementById("button").style.visibility = "visible"; //다시선택 버튼 보이게 함
+    }
+    function re() { //다시 선택을 누르면 모든 수단이 보이게 하고, 다시선택하는 버튼은 안보이게 함
+        document.getElementById("button").style.visibility = "hidden";
+        document.getElementById("s1").style.visibility = "visible";
+        document.getElementById("s2").style.visibility = "visible";
+        document.getElementById("s3").style.visibility = "visible";
+        document.getElementById("a1").href = "5card.html";
+        document.getElementById("a2").href = "5cinema.html";
+        document.getElementById("a3").href = "5bank.html";
+    }
+</script>
+<body>
+    <div style="text-align:center">
+        <img src="icon/menu_pay.png" style="vertical-align:middle;" width="400" height="50" /><br /><br />
+        <a href="5card.html" target="basic_h" id="a1"><img src="icon/pay_card.png" width="120" height="35" style="vertical-align:middle;" onclick="selection(1);"  id="s1"/></a> <br /><br />
+        <a href="5cinema.html" target="basic_h" id="a2"><img src="icon/pay_cinema.png" width="120" height="35" style="vertical-align:middle;" onclick="selection(2);" id="s2"/></a><br /><br />
+        <a href="5bank.html" target="basic_h" id="a3"><img src="icon/pay_bank.png" width="135" height="35" style="vertical-align:middle;"onclick="selection(3);"id="s3" /></a><br /><br />
+        <a href="icon/payw_sel.png" target="basic_h"><img src="icon/pay_re.png" width="90" height="25" onclick="re();" id="button" style="vertical-align:middle; visibility:hidden;" /></a>
+    </div>
+</body>
+</html>

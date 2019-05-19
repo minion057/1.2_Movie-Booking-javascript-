@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ko"></script>
+    <!--한국어 지도를 표기하기 위한 문장-->
+</head>
+<script>
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(37.448523, 126.658080); //영화관 위치(인하공전 4호관) y, x좌표값을 구글지도에 넣은 걸 변수에 저장
+        var mapOptions = {
+            zoom: 15, // 지도의 확대 정도
+            center: myLatlng, //지도의 중심 좌표 : myLatlng(인하공전 4호관)
+            mapTypeId: google.maps.MapTypeId.ROADMAP //지도의 형식에 관한 정보(ROADMAP : 일반 2D 지도)
+        }
+
+        var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); //위의 설정들을 map이라는 변수에 저장
+        var marker = new google.maps.Marker({ //마커지정
+            position: myLatlng, //마커 위치 : myLatlng(인하공전 4호관)
+            map: map, //지도 : 내가 설정한 정보를 가지고 있는 map
+            title: "인하궁전" //마커의 타이틀 : 인하궁전
+        });
+        //var h = parent.location.href;
+        //h = '../main / code.html';
+        var infowindow = new google.maps.InfoWindow( //마커에 보여줄 내용
+            {
+                content: '<h2>인하궁전</h2>' + '<p>꿈의 나라 인하궁전으로<br>역시 영화는 인하궁전!</p>',
+                maxWidth: 250
+            }
+        );
+
+        google.maps.event.addListener(marker, 'click', function () { //마커클릭시 마커의 내용을 보여줌
+            infowindow.open(map, marker);
+        });
+    }
+</script> 
+<body onload="initialize()"><!--상영관 위치를 지도로 보여주는 페이지-->
+        <div style="vertical-align:middle; width:400px; height:300px;" id="map_canvas"></div>
+</body>
+</html>
