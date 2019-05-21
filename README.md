@@ -1,4 +1,4 @@
-# 1.2_Movie-Booking
+# 1.2 Cinema
 2017에 Javascript로만 제작한 영화예매사이트이다.
 
 
